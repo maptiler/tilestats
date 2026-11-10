@@ -4,4 +4,3 @@ tmp
 coverage
 .nyc_output
 *.log
-.tap

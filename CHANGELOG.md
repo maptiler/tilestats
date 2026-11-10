@@ -1,9 +1,10 @@
 # Unreleased
 
-- Require Node 20 (`^20.17.0`), add `.nvmrc`. Node 22+ is not supported because `mapnik` crashes on it.
-- Upgrade `tap` 16 → 21 and fix the `test` and `coverage` scripts
-- Fix security alerts in transitive dependencies with npm `overrides` (`tar`, `node-gyp`, `@mapbox/node-pre-gyp`, `minimatch`, `glob`). The overrides apply only to this repository's lockfile, not to projects that install tilestats as a dependency.
-- CI: run on the `main` branch, use Node from `.nvmrc` and `npm ci`
+- Replace the unmaintained `mapnik` package with `@mapnik/mapnik` 4.8 (Mapnik core 4.3.2), which works on current Node versions
+- Require Node 22 or newer, CI tests Node 22, 24 and 26
+- Replace `tap` with the Node built-in test runner (`node:test`)
+- Fix security alerts in transitive dependencies of `sqlite3` with npm `overrides` (`tar`, `node-gyp`). The overrides apply only to this repository's lockfile, not to projects that install tilestats as a dependency.
+- CI: run on the `main` branch and use `npm ci`
 
 # 2.0.0
 

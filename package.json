@@ -4,7 +4,7 @@
   "description": "Generate statistics about geographic data.",
   "main": "index.js",
   "engines": {
-    "node": "^20.17.0"
+    "node": ">=22"
   },
   "bin": {
     "tilestats-generate": "bin/tilestats-generate",
@@ -13,8 +13,8 @@
   "scripts": {
     "lint": "eslint lib test bin/**",
     "lint-fix": "eslint --fix lib test bin/**",
-    "test": "npm run lint && tap test/*.js --disable-coverage",
-    "coverage": "tap test/*.js --allow-incomplete-coverage --coverage-report=html"
+    "test": "npm run lint && node --test test/*.js",
+    "coverage": "node --test --experimental-test-coverage --test-coverage-exclude=\"test/**\" test/*.js"
   },
   "repository": {
     "type": "git",
@@ -29,23 +29,19 @@
     "@mapbox/tilelive": "^6.1.1",
     "@mapbox/tiletype": "^0.3.0",
     "@mapbox/vector-tile": "^1.2.1",
+    "@mapnik/mapnik": "^4.8.2",
     "d3-queue": "^3.0.7",
     "jsonschema": "^1.4.1",
     "lodash.isplainobject": "^4.0.6",
-    "mapnik": "^4.5.9",
     "meow": "^9.0.0",
     "pbf": "^3.2.1"
   },
   "devDependencies": {
     "eslint": "^8.43.0",
-    "eslint-plugin-node": "^11.1.0",
-    "tap": "^21.8.1"
+    "eslint-plugin-node": "^11.1.0"
   },
   "overrides": {
     "tar": "^7.5.22",
-    "node-gyp": "^12.4.0",
-    "@mapbox/node-pre-gyp": "^2.0.3",
-    "minimatch@>=7.0.0 <11.0.1": "^11.0.5",
-    "glob@>=9.0.0 <14.0.2": "^14.0.4"
+    "node-gyp": "^12.4.0"
   }
 }
