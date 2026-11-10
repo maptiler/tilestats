@@ -1,10 +1,11 @@
 'use strict';
 
-const test = require('tap').test;
+const { test } = require('node:test');
+const assert = require('node:assert/strict');
 const sloppySort = require('./utils/sloppy-sort');
 const validator = require('../lib/validate-stats');
 
-test('valid stats object', t => {
+test('valid stats object', () => {
   const stats = {
     layerCount: 1,
     layers: [
@@ -27,22 +28,20 @@ test('valid stats object', t => {
     ],
   };
 
-  t.ok(validator(stats));
-  t.end();
+  assert.ok(validator(stats));
 });
 
-test('invalid stats object - no layers', t => {
+test('invalid stats object - no layers', () => {
   const stats = {
     layerCount: 1,
   };
 
   const results = validator(stats);
-  t.equal(results.length, 1, 'only one error');
-  t.equal(results[0], 'instance requires property "layers"', 'expected error message');
-  t.end();
+  assert.equal(results.length, 1, 'only one error');
+  assert.equal(results[0], 'instance requires property "layers"', 'expected error message');
 });
 
-test('invalid layer object - no layer name', t => {
+test('invalid layer object - no layer name', () => {
   const stats = {
     layerCount: 1,
     layers: [
@@ -65,12 +64,11 @@ test('invalid layer object - no layer name', t => {
   };
 
   const results = validator(stats);
-  t.equal(results.length, 1, 'only one error');
-  t.equal(results[0], 'instance.layers[0] requires property "layer"', 'expected error message');
-  t.end();
+  assert.equal(results.length, 1, 'only one error');
+  assert.equal(results[0], 'instance.layers[0] requires property "layer"', 'expected error message');
 });
 
-test('invalid layer object - no layer name', t => {
+test('invalid layer object - no layer name', () => {
   const stats = {
     layerCount: 'wrong type',
     layers: [
@@ -95,11 +93,10 @@ test('invalid layer object - no layer name', t => {
   ]);
 
   const results = validator(stats);
-  t.same(sloppySort(results), expected, 'expect lots of errors');
-  t.end();
+  assert.deepEqual(sloppySort(results), expected, 'expect lots of errors');
 });
 
-test('invalid attributes contain mulitple types', t => {
+test('invalid attributes contain mulitple types', () => {
   const stats = {
     layerCount: 1,
     layers: [
@@ -123,7 +120,6 @@ test('invalid attributes contain mulitple types', t => {
   };
 
   const results = validator(stats);
-  t.equal(results.length, 1, 'only one error');
-  t.equal(results[0], 'instance.layers[0].attributes[0].values is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3]', 'expected error message');
-  t.end();
+  assert.equal(results.length, 1, 'only one error');
+  assert.equal(results[0], 'instance.layers[0].attributes[0].values is not any of [subschema 0],[subschema 1],[subschema 2],[subschema 3]', 'expected error message');
 });

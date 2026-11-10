@@ -4,14 +4,27 @@ Generate statistics about geographic data.
 
 ## Installation
 
-Requires Node v16+.
+Requires Node 22 or newer (tested on Node 22, 24 and 26). Mapnik ships prebuilt binaries for Linux and macOS (x64 and arm64).
 
 ```
 git clone https://github.com/maptiler/tilestats.git
 cd tilestats
-npm i
+npm ci
 ./bin/tilestats-generate <input> <options>
 ```
+
+## Development
+
+Run lint and tests (Node built-in test runner):
+
+```
+npm ci
+npm test
+```
+
+`npm run coverage` prints a coverage table to the terminal.
+
+`package.json` uses npm `overrides` to pull patched versions of `tar` and `node-gyp`, which `sqlite3` 5 (a dependency of `@mapbox/mbtiles`) would otherwise install in vulnerable versions. They take effect only in this repository's lockfile.
 
 ## About
 
