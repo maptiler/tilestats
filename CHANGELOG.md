@@ -1,3 +1,10 @@
+# Unreleased
+
+- Require Node 20 (`^20.17.0`), add `.nvmrc`. Node 22+ is not supported because `mapnik` crashes on it.
+- Upgrade `tap` 16 → 21 and fix the `test` and `coverage` scripts
+- Fix security alerts in transitive dependencies with npm `overrides` (`tar`, `node-gyp`, `@mapbox/node-pre-gyp`, `minimatch`, `glob`). The overrides apply only to this repository's lockfile, not to projects that install tilestats as a dependency.
+- CI: run on the `main` branch, use Node from `.nvmrc` and `npm ci`
+
 # 2.0.0
 
 - Ignore/limit attribute values [#1](https://github.com/maptiler/tilestats/pull/1)

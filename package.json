@@ -4,7 +4,7 @@
   "description": "Generate statistics about geographic data.",
   "main": "index.js",
   "engines": {
-    "node": ">=16.0.0"
+    "node": "^20.17.0"
   },
   "bin": {
     "tilestats-generate": "bin/tilestats-generate",
@@ -13,8 +13,8 @@
   "scripts": {
     "lint": "eslint lib test bin/**",
     "lint-fix": "eslint --fix lib test bin/**",
-    "test": "npm run lint && tap test/*.js --no-check-coverage",
-    "coverage": "tap test/test.js --cov --coverage-report=html"
+    "test": "npm run lint && tap test/*.js --disable-coverage",
+    "coverage": "tap test/*.js --allow-incomplete-coverage --coverage-report=html"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,13 @@
   "devDependencies": {
     "eslint": "^8.43.0",
     "eslint-plugin-node": "^11.1.0",
-    "tap": "^16.3.4"
+    "tap": "^21.8.1"
+  },
+  "overrides": {
+    "tar": "^7.5.22",
+    "node-gyp": "^12.4.0",
+    "@mapbox/node-pre-gyp": "^2.0.3",
+    "minimatch@>=7.0.0 <11.0.1": "^11.0.5",
+    "glob@>=9.0.0 <14.0.2": "^14.0.4"
   }
 }

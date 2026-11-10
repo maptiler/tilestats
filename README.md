@@ -4,14 +4,29 @@ Generate statistics about geographic data.
 
 ## Installation
 
-Requires Node v16+.
+Requires Node 20 (version pinned in `.nvmrc`). Node 22 and newer are not supported: the `mapnik` native module crashes on them.
 
 ```
 git clone https://github.com/maptiler/tilestats.git
 cd tilestats
-npm i
+nvm use   # or: fnm use
+npm ci
 ./bin/tilestats-generate <input> <options>
 ```
+
+## Development
+
+Run lint and tests:
+
+```
+nvm use   # or: fnm use
+npm ci
+npm test
+```
+
+`npm run coverage` writes an HTML coverage report to `.tap/report/index.html`.
+
+`package.json` uses npm `overrides` to pull patched versions of vulnerable transitive dependencies of `mapnik`, `sqlite3` and `tap`. They take effect only in this repository's lockfile.
 
 ## About
 
