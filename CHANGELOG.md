@@ -1,3 +1,11 @@
+# Unreleased
+
+- Replace the unmaintained `mapnik` package with `@mapnik/mapnik` 4.8 (Mapnik core 4.3.2), which works on current Node versions
+- Require Node 22 or newer, CI tests Node 22, 24 and 26
+- Replace `tap` with the Node built-in test runner (`node:test`)
+- Fix security alerts in transitive dependencies of `sqlite3` with npm `overrides` (`tar`, `node-gyp`). The overrides apply only to this repository's lockfile, not to projects that install tilestats as a dependency.
+- CI: run on the `main` branch and use `npm ci`
+
 # 2.0.0
 
 - Ignore/limit attribute values [#1](https://github.com/maptiler/tilestats/pull/1)
