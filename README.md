@@ -15,6 +15,8 @@ npm ci
 
 ## Development
 
+npm >= 11.17 is required for the install cooldown in `.npmrc` (`npm install -g npm@11`).
+
 Run lint and tests (Node built-in test runner):
 
 ```
